@@ -1,0 +1,37 @@
+{
+    "name": "fwolf/tt-sync",
+    "description": "Sync between tweet, toot and more",
+    "type": "project",
+    "keywords": [
+        "atom",
+        "mastodon",
+        "rss",
+        "sync",
+        "toot",
+        "tweet",
+        "twitter"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fwolf",
+            "email": "fwolf.aide+tt-sync@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fwolf\\Tools\\TtSync\\": "src/TtSync/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FwolfTest\\Tools\\TtSync\\": "tests/TtSync/"
+        }
+    }
+}
