@@ -4,8 +4,93 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef1e3cc0cfa618e2549510ba4c2370b7",
-    "packages": [],
+    "content-hash": "ec0c86117707c825cade2f98f6e1cdf7",
+    "packages": [
+        {
+            "name": "fwolf/config",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fwolf/config.php.git",
+                "reference": "db04d784d215d3727d81680ed6d6211502e3f59f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/fwolf/config.php/db04d784d215d3727d81680ed6d6211502e3f59f.zip",
+                "reference": "db04d784d215d3727d81680ed6d6211502e3f59f",
+                "shasum": ""
+            },
+            "require": {
+                "fwolf/singleton": "^1.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fwolf\\Config\\": "src/Config/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fwolf",
+                    "email": "fwolf.aide+config.php@gmail.com"
+                }
+            ],
+            "description": "Config management utility",
+            "keywords": [
+                "config",
+                "globalConfig",
+                "option"
+            ],
+            "time": "2017-09-04T08:31:11+00:00"
+        },
+        {
+            "name": "fwolf/singleton",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fwolf/singleton.php.git",
+                "reference": "a7191e61a928944d85b948b99dd4b51e79ed295d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/fwolf/singleton.php/a7191e61a928944d85b948b99dd4b51e79ed295d.zip",
+                "reference": "a7191e61a928944d85b948b99dd4b51e79ed295d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fwolf\\Base\\Singleton\\": "src/Singleton/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fwolf",
+                    "email": "fwolf.aide+singleton.php@gmail.com"
+                }
+            ],
+            "description": "Singleton and SingleInstance trait",
+            "keywords": [
+                "singleton"
+            ],
+            "time": "2016-09-19T10:54:24+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
