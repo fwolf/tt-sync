@@ -11,7 +11,12 @@
  * @license     https://opensource.org/licenses/MIT MIT
  */
 
+use Fwolf\Tools\TtSync\GlobalConfig;
+
 $config = [];
+
+
+$config[GlobalConfig::KEY_SCENES] = [];
 
 
 return $config;
