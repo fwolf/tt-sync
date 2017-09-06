@@ -2,6 +2,7 @@
 
 namespace FwolfTest\Tools\TtSync;
 
+use Fwolf\Tools\TtSync\Exception\InvalidSceneException;
 use Fwolf\Tools\TtSync\GlobalConfig;
 use Fwolf\Tools\TtSync\Scene;
 use Fwolf\Tools\TtSync\SceneBuilder;
@@ -42,5 +43,48 @@ class SceneBuilderTest extends PHPUnitTestCase
 
         $scene = $builder->build('test', $config);
         $this->assertInstanceOf(Scene::class, $scene);
+    }
+
+
+    public function testLoad()
+    {
+        $globalConfig = GlobalConfig::getInstance();
+        $scenesBak = $globalConfig->get(GlobalConfig::KEY_SCENES);
+
+        $sceneConfig = [
+            GlobalConfig::KEY_SCENE_FROM_PLUGIN  => 'example',
+            GlobalConfig::KEY_SCENE_FROM_PROFILE => 'profile1',
+            GlobalConfig::KEY_SCENE_FROM_OPTIONS => '',
+            GlobalConfig::KEY_SCENE_TO_PLUGIN    => 'example',
+            GlobalConfig::KEY_SCENE_TO_PROFILE   => 'profile2',
+            GlobalConfig::KEY_SCENE_TO_OPTIONS   => '',
+        ];
+        $globalConfig->set(GlobalConfig::KEY_SCENES, [
+            'test1' => $sceneConfig,
+            'test2' => $sceneConfig,
+        ]);
+
+        $builder = SceneBuilder::getInstance();
+
+        $scenes = $builder->load('*');
+        $this->assertEquals(2, count($scenes));
+        $this->assertInstanceOf(Scene::class, $scenes['test1']);
+
+        $scenes = $builder->load('test2');
+        $this->assertEquals(1, count($scenes));
+        $this->assertInstanceOf(Scene::class, $scenes['test2']);
+
+
+        $globalConfig->set(GlobalConfig::KEY_SCENES, $scenesBak);
+    }
+
+
+    public function testLoadWithInvalidSceneName()
+    {
+        $this->expectException(InvalidSceneException::class);
+
+        $builder = SceneBuilder::getInstance();
+
+        $builder->load('non-exists-scene');
     }
 }

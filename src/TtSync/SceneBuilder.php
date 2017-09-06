@@ -3,6 +3,7 @@
 namespace Fwolf\Tools\TtSync;
 
 use Fwolf\Base\Singleton\SingleInstanceTrait;
+use Fwolf\Tools\TtSync\Exception\InvalidSceneException;
 
 /**
  * @copyright   Copyright 2017 Fwolf
@@ -30,5 +31,37 @@ class SceneBuilder
             ->setToOptions($config[GlobalConfig::KEY_SCENE_TO_OPTIONS]);
 
         return $scene;
+    }
+
+
+    /**
+     * Load scene array by name
+     *
+     * @param   string $name Use '*' or leave empty to load all.
+     * @return  array
+     * @throws  InvalidSceneException
+     */
+    public function load(string $name = ''): array
+    {
+        $globalConfig = GlobalConfig::getInstance();
+        $configs = $globalConfig->get(GlobalConfig::KEY_SCENES);
+
+        $scenes = [];
+
+        if (empty($name) || '*' == $name) {
+            foreach ($configs as $name => $sceneConfig) {
+                $scenes[$name] = $this->build($name, $sceneConfig);
+            }
+
+        } else {
+            // Single scene
+            if (!array_key_exists($name, $configs)) {
+                throw new InvalidSceneException("Invalid scene: $name");
+            }
+
+            $scenes[$name] = $this->build($name, $configs[$name]);
+        }
+
+        return $scenes;
     }
 }
