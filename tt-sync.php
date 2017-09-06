@@ -14,4 +14,4 @@ require __DIR__ . '/bootstrap.php';
 
 
 $ttSync = new TtSync();
-$ttSync->run();
+$ttSync->run($argv);

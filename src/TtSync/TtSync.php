@@ -16,13 +16,12 @@ class TtSync
     /**
      * Load scenes by cli param
      *
+     * @param   string[] $argv
      * @return  Scene[]
      */
-    protected function loadScenes()
+    protected function loadScenes(array $argv): array
     {
-        global $argc, $argv;
-
-        if (2 < $argc) {
+        if (2 < count($argv)) {
             $sceneName = $argv[2];
         } else {
             $sceneName = '*';
@@ -54,19 +53,19 @@ TAG;
 
     /**
      * Main entrance
+     *
+     * @param   string[] $argv
      */
-    public function run()
+    public function run(array $argv)
     {
-        global $argc, $argv;
-
-        if (2 > $argc) {
+        if (2 > count($argv)) {
             $this->printUsage();
 
             return;
         }
 
         try {
-            $scenes = $this->loadScenes();
+            $scenes = $this->loadScenes($argv);
 
             $action = strtolower($argv[1]);
             switch ($action) {
@@ -82,7 +81,6 @@ TAG;
                 default:
                     echo "Invalid action: $action" . PHP_EOL;
             }
-
         } catch (\Exception $e) {
             echo "Error: " . $e->getMessage() . PHP_EOL;
         }
