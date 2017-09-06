@@ -11,6 +11,8 @@
  */
 
 // Include autoloader
+use Fwolf\Tools\TtSync\GlobalConfig;
+
 $classLoader = require __DIR__ . '/vendor/autoload.php';
 
 
@@ -22,3 +24,6 @@ if (is_readable($userConfigFile)) {
     $userConfig = require $userConfigFile;
     $config = array_merge($config, $userConfig);
 }
+
+$globalConfig = GlobalConfig::getInstance();
+$globalConfig->load($config);
