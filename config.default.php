@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Default config
+ * Default configs
  *
  * For user config, copy this file to 'config.php' then edit it.
  * User config will overwrite default config.
@@ -13,10 +13,10 @@
 
 use Fwolf\Tools\TtSync\GlobalConfig;
 
-$config = [];
+$configs = [];
 
 
-$config[GlobalConfig::KEY_SCENES] = [];
+$configs[GlobalConfig::KEY_SCENES] = [];
 
 
-return $config;
+return $configs;
