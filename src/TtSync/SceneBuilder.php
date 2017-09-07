@@ -43,8 +43,7 @@ class SceneBuilder
      */
     public function load(string $name = ''): array
     {
-        $globalConfig = GlobalConfig::getInstance();
-        $configs = $globalConfig->get(GlobalConfig::KEY_SCENES);
+        $configs = GlobalConfig::getInstance()->getScenes();
 
         $scenes = [];
 

@@ -49,7 +49,7 @@ class SceneBuilderTest extends PHPUnitTestCase
     public function testLoad()
     {
         $globalConfig = GlobalConfig::getInstance();
-        $scenesBak = $globalConfig->get(GlobalConfig::KEY_SCENES);
+        $scenesBak = $globalConfig->getScenes();
 
         $sceneConfig = [
             GlobalConfig::KEY_SCENE_FROM_PLUGIN  => 'example',
@@ -59,7 +59,7 @@ class SceneBuilderTest extends PHPUnitTestCase
             GlobalConfig::KEY_SCENE_TO_PROFILE   => 'profile2',
             GlobalConfig::KEY_SCENE_TO_OPTIONS   => '',
         ];
-        $globalConfig->set(GlobalConfig::KEY_SCENES, [
+        $globalConfig->setScenes([
             'test1' => $sceneConfig,
             'test2' => $sceneConfig,
         ]);
@@ -75,7 +75,7 @@ class SceneBuilderTest extends PHPUnitTestCase
         $this->assertInstanceOf(Scene::class, $scenes['test2']);
 
 
-        $globalConfig->set(GlobalConfig::KEY_SCENES, $scenesBak);
+        $globalConfig->setScenes($scenesBak);
     }
 
 
